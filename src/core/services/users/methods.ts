@@ -1,4 +1,6 @@
 import {
+  CreateUserRequest,
+  CreateUserResult,
   GetListUsersRequest,
   GetListUsersResponse,
   GetUserRequest,
@@ -23,12 +25,23 @@ export function getUserApi(props: GetUserRequest): Promise<GetUserResponse> {
   }).then((res) => res.json());
 }
 
-export function deleteUserApi(props: GetUserRequest): Promise<GetUserResponse> {
+export function deleteUserApi(props: GetUserRequest) {
   return fetch(getUserUrl(`users/${props.id}`), {
     method: "DELETE",
   }).then((res) => {
-    console.log(res);
     revalidatePath(AppRouteKey.home);
     redirect(AppRouteKey.home);
+  });
+}
+
+export function createUserApi(
+  body: CreateUserRequest
+): Promise<CreateUserResult> {
+  return fetch(getUserUrl("users"), {
+    method: "POST",
+    body: JSON.stringify(body),
+  }).then((res) => {
+    revalidatePath(AppRouteKey.home);
+    return res.json();
   });
 }

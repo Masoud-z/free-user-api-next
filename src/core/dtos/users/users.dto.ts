@@ -32,3 +32,15 @@ export interface GetUserRequest {
 export interface GetUserResponse extends BaseResultDto {
   data: UserDto;
 }
+
+export interface CreateUserRequest {
+  name: string;
+  job: string;
+}
+
+export interface CreateUserResult {
+  name: string;
+  job: string;
+  id: string;
+  createdAt: string;
+}

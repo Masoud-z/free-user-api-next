@@ -26,4 +26,14 @@
   .btn-error {
     @apply btn text-red-600 border-red-600 hover:bg-red-100;
   }
+
+  .input-container {
+    @apply flex flex-col justify-start items-start w-96 gap-2 text-white font-semibold;
+  }
+  .input {
+    @apply rounded-xl p-2 w-full border border-solid border-gray-500 focus:outline-none text-black;
+  }
+  .error {
+    @apply border-red-600 border border-solid bg-red-400 text-white font-bold p-4 rounded-xl w-full;
+  }
 }
